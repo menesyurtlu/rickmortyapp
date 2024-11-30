@@ -56,6 +56,7 @@ export default function IndexPage() {
         setQuery((value) => ({
             ...value,
             gender: gender.value,
+            page: "1",
         }))
     }
 
@@ -63,6 +64,7 @@ export default function IndexPage() {
         setQuery((value) => ({
             ...value,
             status: status.value,
+            page: "1",
         }))
     }
 
