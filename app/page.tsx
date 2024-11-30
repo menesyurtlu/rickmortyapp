@@ -78,7 +78,7 @@ export default function IndexPage() {
 
     return (<>
         <div className="px-4 py-2">
-            <div className="mb-10 flex justify-center items-center flex-row gap-4">
+            <div className="mb-10 flex justify-center items-center flex-row gap-4 flex-wrap">
                 <ComboBox selected={query.gender} options={genderOptions} onSelect={onGenderSelect}
                           placeholder={"Select a gender to filter"}></ComboBox>
                 <ComboBox selected={query.status} options={statusOptions} onSelect={onStatusSelect}
