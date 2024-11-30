@@ -1,10 +1,14 @@
-import Image from "next/image";
 import type { ReactNode } from "react";
 import { StoreProvider } from "./StoreProvider";
-import { Nav } from "./components/Nav";
+import {Poppins} from "next/font/google";
+
+const poppins = Poppins({
+  subsets: ['latin', 'latin-ext'],
+  weight: ['300', '400', '500', '600', '700'],
+});
 
 import "./styles/globals.css";
-import styles from "./styles/layout.module.css";
+import {twMerge} from "tailwind-merge";
 
 interface Props {
   readonly children: ReactNode;
@@ -14,70 +18,17 @@ export default function RootLayout({ children }: Props) {
   return (
     <StoreProvider>
       <html lang="en">
-        <body>
-          <section className={styles.container}>
-            <Nav />
+        <body className={twMerge("w-screen h-min-screen bg-mirage-950 antialiased", poppins.className)}>
+        <header className="flex flex-col justify-center items-center p-20">
+          <h2 className="font-bold text-5xl text-white">
+            Rick And Morty
+          </h2>
+        </header>
+        <main className="mx-10 my-20">{children}</main>
 
-            <header className={styles.header}>
-              <Image
-                src="/logo.svg"
-                className={styles.logo}
-                alt="logo"
-                width={100}
-                height={100}
-              />
-            </header>
-
-            <main className={styles.main}>{children}</main>
-
-            <footer className={styles.footer}>
-              <span>Learn </span>
-              <a
-                className={styles.link}
-                href="https://reactjs.org"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                React
-              </a>
-              <span>, </span>
-              <a
-                className={styles.link}
-                href="https://redux.js.org"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Redux
-              </a>
-              <span>, </span>
-              <a
-                className={styles.link}
-                href="https://redux-toolkit.js.org"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Redux Toolkit
-              </a>
-              <span>, </span>
-              <a
-                className={styles.link}
-                href="https://react-redux.js.org"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                React Redux
-              </a>
-              ,<span> and </span>
-              <a
-                className={styles.link}
-                href="https://reselect.js.org"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Reselect
-              </a>
-            </footer>
-          </section>
+        <footer className="px-4 py-2 text-center text-mirage-200/50">
+          Developed by <a href="https://www.tuskun.com" className="font-bold">Enes Yurtlu</a>
+        </footer>
         </body>
       </html>
     </StoreProvider>
